@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0"  />
+
+    <title>Bookshelf</title>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/js_77_Stanislavbox/assets/apple-touch-icon-bfd08949.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA1NJREFUWEe9l8tPU0EUxr8z97aVhxiQQgDFBC1BRAMYiSALjInxEV/42BjdmLhkwz/gXtcmbow7jSsXBhOQqBDAQAgBBYJKQsAUBIIWOq23994ZM4WiEFsKXDrLpp35zTdfz/kOcc4fALhARFUAdKR4USAQOKHr+kUiugTgWKohSEqphUIhdfAVIrpGRD4pZVqqhCB1kILgnJdLSTdsi26Hg6LYMKTLSQimEdxuICOLQdP+7hwFWIHwTHzlhwMLdvNwv31m9rsssG0J6RBFeibD/oMMNQ06srLZ6q6rAOqTqalQUSRkNY/0iyuf+6ySL0M2hO0MQVY2oaxKw6U7buTm/5VgDQDnvFDa1OSfEo2fek1fd6uJyW8CEWP7EHtygIoaHbfue5BXmACAiJqEQOOsX/gGe0y0vzIxPyNgb1IJIQDbVP5aht8UAIBGy4RvbsZGd5uJ8WEbwYAE+8c8G2nCl4D5HxJGSEYhNg0AwGdGJKYnBfo+WDANidJjWtIQY0M2Ol6b+LUgoz7aEoC6ZcSQaHluILAgUXfWheJDGjy71ljnv2J8bI/gxWMD8zMy+nxbBjB+Szx7FMbIgI3KkzoaLrtReIBtCOEcQFji6cMwulot5HgJVXU66s+7UFKmQdPjK+E4QEeLBU0H9uYTqk/pqDntQunR+BA7AqAemxiQX0SorNUTemLHAGIQ3gJK6IkdBVAQ6jkSeWLHAWIQ8TyREoBEnkgZQDxPDHSZDhWilTqg/oaJ1npPzPkFXj5xohImCbDeE6oB9Xda+Dm3zVKsGlLnGxNjg4kViKnDVJ3Yx2D8BkYHLEx8ETDC2+gF6iaWudzRkloEEAEzUwK97030tFmYmxZIz9xEIFF5QLXjpA6M8yWl3KxfoOetid53FoKLEkeOa7iZTCJyAkBxxfKEUuLbsI09OYTr9xJEsqWlpTxN0+4KIc4xxoq3o0DstyoLjI/YGO63tDAXaedueXJzvGw18q/pp1LK3ZzzOsbYUQC5TgCoPSwLmBi13LN+6a2s12szMllhbPhZD6ACe0YwGExjjDk6J37/ShTihrekwn3N5aKrAMrVGLhxtnJKhuUJzMM5LyWi67FZNKUA6i7/zqLRqdzBCya9lYJYXFysVlP5HwsgXqFBtYlkAAAAAElFTkSuQmCC"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAYVJREFUOE+dkz1IAmEYx/+vV3fvnecF0hS19EFLrc5ha0i4tjmHiA0tDUENTUFLNESTUUEQRRFU5FL0CUEGFQ4VglFmkVednnoXZ6mJpWfP+r7Pj9/7PP+XyLI8yjCMD0AD/lEkHo9LlFJ/WiVDaVUTzTAsDAHlCQgBiNEQjeqNl6evS3ubaedbQq/KaGljMOCl4AXyBYjFYjYCIRBcU10rcykkld8ZmgboGtDRbcHwpACrzVIECIIQSCpwbS2reLrXYJXKIefHWdxeaWjv+gNACHGd7acROsnA7aEQpZxgoWYnPrC7mqkMONxRMTOehLO/Hm4PB1Gy1A6YGkmCpUBvDlI0MW1gAIziKEpMagYYkJ8mi9OKuRnkDfKPz5u8POo4ClYZYvxBQziUKdshxxPcXGexPq+iubXCGivFUHnXsbGQQvgiC+8YXwxSJBLh7Xa7H4CjWo7lBHCwrYo9fayDo0QsJMWAUErrqgGM8+c7jmvqZAYZhvhKo2am+/uO8YtZlvV/AomnyYpY4ttGAAAAAElFTkSuQmCC"
+    />
+
+
+
+    <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsImljb25zIjpbeyJzcmMiOiIvYW5kcm9pZC1jaHJvbWUtMTkyeDE5Mi5wbmciLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn0seyJzcmMiOiIvYW5kcm9pZC1jaHJvbWUtNTEyeDUxMi5wbmciLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dLCJ0aGVtZV9jb2xvciI6IiNmZmZmZmYiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2ZmZmZmZiIsImRpc3BsYXkiOiJzdGFuZGFsb25lIn0=" />
+    
+
+    <script type="module" crossorigin src="/js_77_Stanislavbox/assets/index-dda61107.js"></script>
+    <link rel="modulepreload" crossorigin href="/js_77_Stanislavbox/assets/footer-9aaf24de.js">
+    <link rel="stylesheet" href="/js_77_Stanislavbox/assets/footer-a6f2825d.css">
+  </head>
+
+  <body class="page">
+    <div class="js-spinner-wrap">
+  <div class="book">
+    <div class="inner">
+      <div class="left"></div>
+      <div class="middle"></div>
+      <div class="right"></div>
+    </div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>
+
+    <div class="container">
+  <div class="header_block">
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="./index.html" class="header__logo">
+            <svg class="page-logo">
+              <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-logo-1"></use>
+            </svg>
+            <svg class="page-name">
+              <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-bookshelf"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="./index.html" class="header__home">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a href="./shopping_list.html" class="header__shopping_list">SHOPPING LIST
+            <span class="cart__img">
+              <svg class="header__shopping_icon">
+                <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-shopping"></use>
+              </svg> </span></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__toggle">
+      <label class="switch">
+        <input type="checkbox" class="switch__input js-switcher" />
+        <!--Stas -->
+        <span class="switch__slider"></span>
+      </label>
+    </div>
+    <div class="header__userauthbuttons">
+      <button class="user_board_signup is-hidden">
+        <p class="header__sign_up_text">Sign up</p>
+        <svg class="header__signup_img">
+          <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-arrow-right"></use>
+        </svg>
+      </button>
+      <div class="userboard_dropdown dropdown is-hidden">
+        <button class="user_board_name">
+          <svg class="header__user_img">
+            <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-user"></use>
+          </svg>
+          <p class="header__username">USERNAME</p>
+          <svg class="header__scroldown_img">
+            <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-scroll-down"></use>
+          </svg>
+        </button>
+        <button class="dropdown__button" id="logOutButton">
+          <span class="logout_text">Log out</span><span class="logout_icon">
+            <svg class="header__logout_icon">
+              <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-arrow-right"></use>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <button class="header__burger_menu">
+      <svg class="header__burger_icon">
+        <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-burger"></use>
+      </svg>
+    </button>
+  </div>
+</div>
+<div class="modal-form" id="modal_form">
+  <div class="backdrop is-hidden " data-modal id="backdrop_hide_show">
+    <div class="modal container-registration">
+      <form action="submit" class="sign_up_form sign_in_form">
+        <button class="close-modal" id="closeModalButton">
+          <svg class="close-form ">
+            <use href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-close"></use>
+          </svg>
+        </button>
+        <div class="position-form">
+          <form action="submit" class="sign_form sign_up_form">
+            <div class="uni-form">
+              <div class="position-name">
+                <input type="text" name="name" id="sign_up_name" placeholder="name" required>
+              </div>
+            </div>
+        </div>
+        <div class="uni-form">
+          <div class="position-name">
+            <input type="email" name="email" id="sign_up_email" placeholder="email" required>
+            <svg class="registration-email">
+              <use href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-email"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="uni-form-pass">
+          <div class="position-name">
+            <input type="password" name="password" id="sign_up_password" placeholder="password" required>
+            <svg class="registration-lock">
+              <use href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-lock"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="pos-button">
+          <button class="button-registraition" type="button">SIGN UP</button>
+        </div>
+        <div class="pos-button">
+          <button class="button-login is-hidden" type="button">SIGN IN</button>
+        </div>
+        <div class="link-change">
+          <a class="first-link link_underline" href="#">SIGN UP</a>
+          <a class="last-link" href="#">SIGN IN</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+<div class="container">
+  <div class="modal_burger" id="modal_burger">
+    <div class="burger-wrapper">
+      <div class="modal_burger_content">
+        <div class="header_block header_block_burger">
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="./index.html" class="header__logo">
+                  <svg class="page-logo">
+                    <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-logo-1"></use>
+                  </svg>
+                  <svg class="page-name">
+                    <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-bookshelf"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="header__toggle">
+            <label class="switch">
+              <input type="checkbox" class="switch__input js-switcher-two" />
+              <!--Stas -->
+              <span class="switch__slider"></span>
+            </label>
+          </div>
+          <button class="close-modal-burger" id="closeBurgerButton">
+            <svg class="header__burgercloser__icon">
+              <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="burger__signup_button">
+          <button class="burger_user_board_signup is-hidden">
+            <p class="header__sign_up_text">Sign up</p>
+            <svg class="header__signup_img">
+              <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-arrow-right"></use>
+            </svg>
+          </button>
+
+          <div class="burger_userinfo is-hidden">
+            <div class="burger_usercard">
+              <svg class="header__user_img">
+                <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-user"></use>
+              </svg>
+              <p class="burger__username">USERNAME</p>
+            </div>
+            <div class="burger_nav">
+              <a class="burger__home_link" href="./index.html">HOME</a>
+              <a class="burger__sl_link" href="./shopping_list.html">SHOPPING LIST</a>
+            </div>
+
+            <button class="burger__logout" id="logOutButtonBurger">
+              <span class="logout_text">Log out</span><span class="logout_icon">
+                <svg class="header__logout_icon">
+                  <use xlink:href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-arrow-right"></use>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+<div class="backdrop  is-hidden " data-modal>
+  <div class="modal container-registration">
+
+    <div class="position-form">
+      <form>
+        <div class="uni-form">
+          <div class="position-name">
+
+            <input type="text" name="name" id="name" placeholder="name" required>
+
+          </div>
+        </div>
+        <div class="uni-form">
+          <div class="position-name">
+
+            <input type="email" name="email" id="email" placeholder="email" required>
+          </div>
+        </div>
+        <div class="uni-form">
+          <div class="position-name">
+            <input type="password" name="password" id="password" placeholder="password" required>
+
+          </div>
+        </div>
+        <div class="pos-button">
+          <button class="button-registraition" type="button">SIGN UP</button>
+        </div>
+        <div class="link-change">
+          <a class="first-link" href="#">SIGN UP</a>
+          <a class="last-link" href="#">SIGN IN</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!--Page -->
+    <div class="container">
+      <div class="wrapper wrap-for-footer">
+        <!-- Intersection observer target for scroll-up button -->
+        <div class="to-top-target"></div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <!-- Book category selection menu -->
+          <div class="categories">
+  <ul class="categories-list">
+    <li class="categories-list-item">
+      <button
+        type="button"
+        class="category-btn all-categories-btn active-category"
+        name="allcategories"
+      >
+        All categories
+      </button>
+    </li>
+    <!-- >>>>>>> html inserted with js <<<<<<< -->
+  </ul>
+</div>
+
+
+          <!-- Support Ukraine -->
+          <section class="support-ua-block">
+  <div class="support-title-flex">
+    <h2 class="support-ua-title">Support Ukraine</h2>
+    <svg class="support-icon" width="20" height="32">
+      <use href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-support-ukraine"></use>
+    </svg>
+  </div>
+  <div class="support-ua-list"></div>
+  <button type="button" class="next">
+    <svg width="22" class="support-icon-next" height="22">
+      <use href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-scroll-down"></use>
+    </svg>
+  </button>
+</section>
+
+        </aside>
+
+        <!-- Main -->
+        <main class="content">
+          <!-- Page content -->
+          
+<div class="home-wrapper">
+    <h1 class="home-title">Best Sellers <span class="home-title-accent">Books</span></h1>
+    <div class="books-container js-container">
+    </div>
+    <!-- <div class="js-guard"></div> -->
+</div>
+
+          <!-- Modal -->
+          <!-- burger-menu-->
+          <!-- Back to top button -->
+          <button type="button" class="back-to-top hidden" aria-label="Scroll to top">
+  <svg class="button-icon button-icon-arrow" width="24" height="24">
+    <use href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-scroll-up"></use>
+  </svg>
+</button>
+
+        </main>
+      </div>
+    </div>
+
+    <footer class="footer-section">
+    <div class="footer-container container">
+        <p class="footer-copyright-text">© 2023 All rights reserved.
+            <span class="footer-part-text">
+                Partial or complete copying of site information is possible only with permission
+            </span>
+        </p>
+        <div class="creators-info">
+            <span class="creators-info-text">Created by</span>
+            <button type="button" class="open-footer-modal">
+                <span class="footer-team-name">Reactive Devs</span>
+            </button>
+        </div>
+   </div>
+</footer>
+
+<!------------ FOOTER MODAL -------------->
+<div class="footer-modal-backdrop footer-modal-is-hidden">
+    <div class="footer-modal">
+        <button type="button" class="footer-modal-close-btn">
+            <span class="footer-modal-close">&times;</span>
+        </button>
+        <h2 class="footer-modal-title">Reactive Devs</h2>
+        <ul class="developers-list">
+            <li class="developer-card">
+                <a href="https://github.com/Stanislavbox" target="_blank">
+                    <img class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="Stanislavbox" width="160" loading=lazy>
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">Stanislavbox</h3>
+                        <h4 class="footer-modal-developer-position">Team lead</h4>
+                    </div>
+                </a>
+            </li>
+            <li class="developer-card">
+                <a href="https://github.com/irkutsio" target="_blank">
+                    <img class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="irkutsio" width="160" loading=lazy>
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">irkutsio</h3>
+                        <h4 class="footer-modal-developer-position">Scrum Master</h4>
+                    </div>
+                </a>
+            </li>
+            <li class="developer-card">
+                <a href="https://github.com/SaviukIryna" target="_blank">
+                    <img class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="SaviukIryna" width="160" loading=lazy>
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">SaviukIryna</h3>
+                        <h4 class="footer-modal-developer-position">Developer</h4>
+                    </div>
+                </a>
+            </li>
+            <li class="developer-card">
+                <a href="https://github.com/YazikovXIII" target="_blank">
+                    <img class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="YazikovXIII" width="160" loading=lazy>
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">YazikovXIII</h3>
+                        <h4 class="footer-modal-developer-position">Developer</h4>
+                    </div>
+                </a>
+            </li>
+            <li class="developer-card">
+                <a href="https://github.com/julie08ua" target="_blank">
+                    <img class="footer-modal-img" class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="julie08ua"
+                        width="160">
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">julie08ua</h3>
+                        <h4 class="footer-modal-developer-position">Developer</h4>
+                    </div>
+                </a>
+            </li>
+            <li class="developer-card">
+                <a href="https://github.com/PoliukhovychAnna" target="_blank">
+                    <img class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="PoliukhovychAnna" width="160" loading=lazy>
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">PoliukhovychAnna</h3>
+                        <h4 class="footer-modal-developer-position">Developer</h4>
+                    </div>
+                </a>
+            </li>
+            <li class="developer-card">
+                <a href="https://github.com/dmytroberezhnoi" target="_blank">
+                    <img class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="dmytroberezhnoi" width="160">
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">dmytroberezhnoi</h3>
+                        <h4 class="footer-modal-developer-position">Developer</h4>
+                    </div>
+                </a>
+            </li>
+            <li class="developer-card">
+                <a href="https://github.com/MaksTrit" target="_blank">
+                    <img class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="MaksTrit" width="160" loading=lazy>
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">MaksTrit</h3>
+                        <h4 class="footer-modal-developer-position">Developer</h4>
+                    </div>
+                </a>
+            </li>
+            <li class="developer-card">
+                <a href="https://github.com/KharabaraRoman" target="_blank">
+                    <img class="footer-modal-img" src="/js_77_Stanislavbox/assets/developer-789df7f6.webp" alt="KharabaraRoman" width="160" loading=lazy>
+                    <div class="developer-card-text">
+                        <h3 class="footer-modal-developer-name">KharabaraRoman</h3>
+                        <h4 class="footer-modal-developer-position">Developer</h4>
+                    </div>
+                </a>
+            </li>
+            </ul>
+            </div>
+            </div>
+    </div>
+</div>
+    
+    <div class="popup-backdrop popup-is-hidden">
+  <div class="popup-book-modal popup-is-hidden">
+    <button class="popup-book-close-btn js-popup-close" type="button">
+      <svg class="popup-book-close-icon js-popup-close" width="24" height="24">
+        <use class="js-popup-close" href="/js_77_Stanislavbox/assets/sprite-3462b723.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="popup-book-wrapper">
+      <img class="popup-book-cover" src="" alt="Book`s cover" />
+      <div class="popup-book-inner">
+        <h2 class="popup-book-title"></h2>
+        <h3 class="popup-book-author"></h3>
+        <p class="popup-book-description">N/a</p>
+        <ul class="list popup-book-shops-list">
+          <li class="popup-book-shops-item">
+            <a
+              href=""
+              target="_blank"
+              class="popup-book-shops-link popup-shop-icon-rectungular popup-shop-amazon"
+            ></a>
+          </li>
+          <li class="popup-book-shops-item">
+            <a
+              href=""
+              target="_blank"
+              class="popup-book-shops-link popup-shop-icon-sqr popup-shop-apple"
+            ></a>
+          </li>
+          <li class="popup-book-shops-item">
+            <a
+              href=""
+              target="_blank"
+              class="popup-book-shops-link popup-shop-icon-sqr popup-shop-bs"
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button class="popup-book-btn" type="button"></button>
+    <p class="popup-book-notice">
+      Сongratulations! You have added the book to the shopping list. To delete,
+      press the button “Remove from the shopping list”.
+    </p>
+  </div>
+</div>
+
+
+    
+    
+  </body>
+</html>
